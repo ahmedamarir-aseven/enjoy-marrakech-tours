@@ -1,0 +1,129 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 42 52% 93%;
+    --foreground: 40 18% 10%;
+    --card: 0 0% 100%;
+    --card-foreground: 40 18% 10%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 40 18% 10%;
+    --primary: 161 70% 14%;
+    --primary-foreground: 42 52% 93%;
+    --secondary: 40 44% 65%;
+    --secondary-foreground: 40 18% 10%;
+    --muted: 42 30% 88%;
+    --muted-foreground: 38 12% 34%;
+    --accent: 40 44% 65%;
+    --accent-foreground: 40 18% 10%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 39 32% 80%;
+    --input: 39 32% 80%;
+    --ring: 161 70% 14%;
+    --radius: 0.625rem;
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-sand text-ink font-sans antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  ::selection {
+    background: #c6a15b;
+    color: #072a20;
+  }
+
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #efe5cf;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #0b3d2e;
+    border-radius: 8px;
+    border: 2px solid #efe5cf;
+  }
+}
+
+@layer components {
+
+  /* Moroccan lattice backdrop for deep-green sections */
+  .zellige {
+    background-color: #072a20;
+  }
+
+  .zellige-light {
+    background-color: #F7F1E5;
+  }
+
+  /* Horseshoe-arch image frame */
+  .arch {
+    border-radius: 999px 999px 18px 18px;
+  }
+
+  .eyebrow {
+    @apply font-sans text-[11px] font-semibold uppercase tracking-[0.32em] text-gold-deep;
+  }
+}
+
+/* Scroll reveal */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition:
+    opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+  transition-delay: var(--reveal-delay, 0ms);
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+/* Slow ken-burns for hero */
+@keyframes kenburns {
+  0% {
+    transform: scale(1.02);
+  }
+
+  100% {
+    transform: scale(1.12);
+  }
+}
+
+.kenburns {
+  animation: kenburns 22s ease-in-out infinite alternate;
+}
